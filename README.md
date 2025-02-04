@@ -1,2 +1,1 @@
-# golf
-Fun stats for fun people
+# Fun Stats for Fun Labs
