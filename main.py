@@ -1,9 +1,7 @@
 import os
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from scipy import stats
 
 def main(results_name : str):
     # get name of scenario
@@ -15,7 +13,7 @@ def main(results_name : str):
         os.mkdir(plot_dir)
 
     # load csv
-    data_path = os.path.join('results', f'{results_name}.csv')
+    data_path = os.path.join('data', f'{results_name}.csv')
     data : pd.DataFrame = pd.read_csv(data_path)
 
     # set teams if not in data
@@ -350,5 +348,5 @@ def main(results_name : str):
     
 
 if __name__ == "__main__":
-    results_name : str = "david_fest"
-    main(results_name)
+    scenario_name : str = "david_fest"
+    main(scenario_name)
