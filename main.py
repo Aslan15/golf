@@ -26,7 +26,7 @@ def main(results_name : str):
             else:
                 teams.append(1)
         data['Team'] = teams
-        data.to_csv(data_path)
+        data.to_csv(data_path,index=False)
     
     # get list of players and sort alphabetically
     players : list = list(data['Player'].unique())
