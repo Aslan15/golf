@@ -9,8 +9,8 @@ def main(results_name : str):
 
     # creat folder for plots
     plot_dir : str = os.path.join('plots', results_name)
-    if not os.path.isdir(plot_dir):
-        os.mkdir(plot_dir)
+    if not os.path.isdir('./plots'): os.mkdir('./plots')
+    if not os.path.isdir(plot_dir): os.mkdir(plot_dir)
 
     # load csv
     data_path = os.path.join('data', f'{results_name}.csv')
@@ -43,6 +43,16 @@ def main(results_name : str):
     plt.savefig(plot_path)
     plt.close()
 
+    plt.figure(figsize=(8,16))
+    ax = sns.violinplot(data=data, x='Hits', y='Hole', hue='Course', split=True, orient='h', inner=None, gap=0.1)
+
+    # save plot
+    plot_path = os.path.join(plot_dir, f'ridge_holes_hits.png')
+    plt.suptitle('Distribution of Hits per Hole')
+    ax.grid(True)
+    plt.savefig(plot_path)
+    plt.close()
+
     ## RIDGE PLOTS PER PLAYER
     plt.figure(figsize=(9,16))
     ax = sns.violinplot(data=data, x='Diff', y='Player', hue='Course', split=True, orient='h', inner=None, gap=0.1)
@@ -54,6 +64,16 @@ def main(results_name : str):
     plt.savefig(plot_path)
     plt.close()
 
+    plt.figure(figsize=(9,16))
+    ax = sns.violinplot(data=data, x='Hits', y='Player', hue='Course', split=True, orient='h', inner=None, gap=0.1)
+
+    # save plot
+    plot_path = os.path.join(plot_dir, f'ridge_players_hits.png')
+    plt.suptitle('Distribution of Hits per Player')
+    ax.grid(True)
+    plt.savefig(plot_path)
+    plt.close()
+
     ## RIDGE PLOTS PER TEAM
     plt.figure(figsize=(9,16))
     ax = sns.violinplot(data=data, x='Diff', y='Team', hue='Course', split=True, orient='h', inner=None, gap=0.1)
@@ -61,6 +81,16 @@ def main(results_name : str):
     # save plot
     plot_path = os.path.join(plot_dir, f'ridge_team.png')
     plt.suptitle('Distribution of ΔHits per Team')
+    ax.grid(True)
+    plt.savefig(plot_path)
+    plt.close()
+
+    plt.figure(figsize=(9,16))
+    ax = sns.violinplot(data=data, x='Hits', y='Team', hue='Course', split=True, orient='h', inner=None, gap=0.1)
+
+    # save plot
+    plot_path = os.path.join(plot_dir, f'ridge_team_hits.png')
+    plt.suptitle('Distribution of Hits per Team')
     ax.grid(True)
     plt.savefig(plot_path)
     plt.close()
